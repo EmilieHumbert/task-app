@@ -26,6 +26,11 @@ class App extends Component {
     });
   };
 
+  handleDelete = (idToRemove) => {
+    const updatedList = this.state.list.filter(({ id }) => id !== idToRemove);
+    this.setState({ ...this.state, list: updatedList });
+  };
+
   render() {
     return (
       <div className="col-6 mx-auto mt-5">
@@ -45,7 +50,10 @@ class App extends Component {
             </button>
           </div>
         </form>
-        <Overview list={this.state.list} />
+        <Overview
+          list={this.state.list}
+          delete={this.handleDelete}
+        />
       </div>
     );
   }
