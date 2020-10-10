@@ -7,7 +7,7 @@ class App extends Component {
     super();
     this.state = {
       input: "",
-      list: ["beer"],
+      list: [{ task: "beer", id: 1 }],
     };
   }
 
@@ -19,7 +19,10 @@ class App extends Component {
     event.preventDefault();
     this.setState({
       ...this.state,
-      list: [...this.state.list, this.state.input],
+      list: [
+        ...this.state.list,
+        { task: this.state.input, id: this.state.list.length + 1 },
+      ],
     });
   };
 
